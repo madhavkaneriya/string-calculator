@@ -4,11 +4,16 @@ const add = (numbers) => {
     }
     let delimiter = /,|\n/; // default delimiter
     if (numbers.startsWith('//')) {
-        // identify custom delimiter
         const strings = numbers.split('\n');
-        delimiter = strings[0].slice(-1);
-        numbers = strings[1];
+        const customDelimiter = strings[0].slice(2); // Extract delimiter after "//"
+        if (customDelimiter.startsWith('[') && customDelimiter.endsWith(']')) {
+            delimiter = customDelimiter.slice(1, -1); // Create regex from custom delimiter
+        } else {
+            delimiter = customDelimiter; // Handle single-character delimiter
+        }
+        numbers = strings[1]; // The rest of the numbers
     }
+    
     let nums = numbers.split(delimiter).map(Number).filter((num) => num < 1000);
     const negatives = nums.filter((num) => num < 0);
     if (negatives.length) {

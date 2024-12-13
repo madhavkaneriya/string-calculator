@@ -39,3 +39,7 @@ test('should ignore extra spaces between numbers', () => {
 test('should ignore number bigger than 1000', () => {
     expect(add('1001, 1, 1002, 999, 2000')).toBe(1000);
 });
+
+test('should allow delimiter of any length', () => {
+    expect(add('//[***]\n1***2***3')).toBe(6);
+});
