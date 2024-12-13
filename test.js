@@ -35,3 +35,7 @@ test('should throw an exception with the list of negative numbers if found', () 
 test('should ignore extra spaces between numbers', () => {
     expect(add(' 1 , 2 ')).toBe(3);
 });
+
+test('should ignore number bigger than 1000', () => {
+    expect(add('1001, 1, 1002, 999, 2000')).toBe(1000);
+});
