@@ -10,9 +10,9 @@ const add = (numbers) => {
         numbers = strings[1];
     }
     const nums = numbers.split(delimiter);
-    const hasNegative = nums.some((num) => Number(num) < 0);
-    if (hasNegative) {
-        throw new Error('negative numbers not allowed');
+    const negatives = nums.filter((num) => Number(num) < 0);
+    if (negatives.length) {
+        throw new Error(`negative numbers not allowed: ${negatives.join(',')}`);
     }
     return nums.reduce((sum, num) => sum + Number(num), 0);
 }
