@@ -2,7 +2,7 @@ const add = (numbers) => {
     if (!numbers) {
         return 0;
     }
-    return null; // default value
+    return parseInt(numbers); // default value
 }
 
 module.exports = add;
